@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iris-blue-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: iris-blue-app
+  template:
+    metadata:
+      labels:
+        app: iris-blue-app
+    spec:
+      containers:
+        - name: workload
+          image: hashicorp/http-echo
+          args: ["-text='iris-blue team'"] 
+          ports:
+            - name: http-port
+              containerPort: 8080
