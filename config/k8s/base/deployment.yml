@@ -15,7 +15,7 @@ spec:
       containers:
         - name: workload
           image: hashicorp/http-echo
-          args: ["-text='iris-blue team'"] 
+          args: ["-listen=:80","-text='iris-blue team'"] 
           ports:
             - name: http-port
-              containerPort: 8080
+              containerPort: 80
