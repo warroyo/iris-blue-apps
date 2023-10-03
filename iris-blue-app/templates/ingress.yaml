@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: iris-blue-app
+spec:
+  ports:
+    - name: http-port
+      port: 80
+      targetPort: http-port
+      protocol: TCP
+  selector:
+    app: iris-blue-app
+---
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: iris-blue-app
+spec:
+  virtualhost:
+    fqdn: {{ .Values.httpproxy.fqdn }}
+  routes:
+    - conditions:
+      - prefix: /
+      services:
+        - name: iris-blue-app
+          port: 80
