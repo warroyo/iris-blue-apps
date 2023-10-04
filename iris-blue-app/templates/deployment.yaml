@@ -19,4 +19,4 @@ spec:
           -  {{ printf "-text='%s'" .Values.appText }}          
           ports:
             - name: http-port
-              containerPort: 8080
+              containerPort: 5678
